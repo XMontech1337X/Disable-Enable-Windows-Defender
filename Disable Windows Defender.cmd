@@ -27,12 +27,6 @@ reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\KslD" /v "Start" /t REG_DWOR
 :: Disable Windows Defender Policy
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f >nul
 
-:: Disable Windows Defender Tasks
-schtasks.exe /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /Disable >nul
-schtasks.exe /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /Disable >nul
-schtasks.exe /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" /Disable >nul
-schtasks.exe /Change /TN "Microsoft\Windows\Windows Defender\Windows Defender Verification" /Disable >nul
-
 echo.
 if not defined HYPEOS_STEP_RESULT set "HYPEOS_STEP_RESULT=SUCCESS"
 echo [KENSHTWEAKS] CHANGE: WINDOWS DEFENDER DISABLED
